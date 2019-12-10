@@ -10,7 +10,8 @@ fi
 
 while true; do
     ssh -T $OPTS -i "$ID_RSA" "$@" </dev/null
-    if [ $? -eq 0 ]; then
+    if [ $? -le 1 ]; then
+        # sh exit 0, nologin exit 1, false exit 1
         break
     fi
     date
